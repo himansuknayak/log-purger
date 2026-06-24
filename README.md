@@ -6,10 +6,10 @@ log-purger.py automates the deletion of historic log files to prevent disk space
 
 - **Python** version 3.8 or higher is required.
 
+- **Dependencies:** Install the required `requests` and `psutil`libraries before execution.
+
 > [!WARNING]
 > Running this script Python version lower than 3.8 will cause runtime execution failure.
-
-- **Dependencies:** Install the required `requests` and `psutil`libraries before execution.
 
 ```bash
 pip install requests psutil
