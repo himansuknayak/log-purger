@@ -10,8 +10,7 @@ log-purger.py automates the deletion of historic log files to prevent disk space
   > Running this script Python version lower than 3.8 will cause runtime execution failure.
   > **Dependencies:** Install the required `requests` and `psutil`libraries before execution.
 
-```
-bash
+```bash
 pip install requests psutil
 ```
 
@@ -19,8 +18,7 @@ pip install requests psutil
 
 Execute the script from the terminal using the following command
 
-```
-bash
+```bash
 python log-purger.py --dir /var/log --days 30
 ```
 
@@ -41,14 +39,13 @@ python log-purger.py --dir /var/log --days 30
 Upon successful execution, following JSON output is expected.
 
 ```json
-{"status": "success", "files_deleted": 14, "space_saved_mb": 42.5}
+{ "status": "success", "files_deleted": 14, "space_saved_mb": 42.5 }
 ```
+
 ### Error Response (400 Not Found)
 
-Passing an invalid or unreachable directory will trigger a termination error. 
+Passing an invalid or unreachable directory will trigger a termination error.
 
 ```json
-{"status": "error", "message": "Directory not found"}
+{ "status": "error", "message": "Directory not found" }
 ```
-
-
