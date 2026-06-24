@@ -1,53 +1,54 @@
-# log-purger.py
+# Log Purger Utility (`log-purger.py`)
 
-## Project Overview
+log-purger.py automates the deletion of historic log files to prevent disk space exhaustion.
 
-log-purger.py is used to clean up old log files from the server to maintain the disk space.
+## Prerequisite
 
-## Usage Guide
+- **Python** version 3.8 or higher is required.
 
-To run this script, python 3.8 or above is required.
-
-> [!WARNING]
-> Using older version earlier than 3.8 will crash the server
-
-## Installation Guide
-
-To run this, install `requests` and `psutil` libraries
+  > [!WARNING]
+  > Running this script Python version lower than 3.8 will cause runtime execution failure.
+  > **Dependencies:** Install the required `requests` and `psutil`libraries before execution.
 
 ```
+bash
 pip install requests psutil
 ```
 
-```
-import requests
-import psutil
-```
+## Execution and Usage
 
-## Running the Script
-
-To run the script, type the following command on terminal.
+Execute the script from the terminal using the following command
 
 ```
+bash
 python log-purger.py --dir /var/log --days 30
 ```
 
-| `--dir` | `--days` |
-| --- | --- |
-|  The `--dir` is the target directory where the logs are stored   | `--days` is the threshold (like, any logs older than that number of days get deleted permanently) |
+## Command-Line Argument
 
+| Argument | Type    | Description                                                         |
+| -------- | ------- | ------------------------------------------------------------------- |
+| `--dir`  | string  | Specifies the absolute target directory where log files are stored. |
+| `--days` | integer | Any log older than the specific number of days will be deleted.     |
 
-It returns the following JSON output
+> [!CAUTION]
+> File deletion is immediate and permanent. There is no recovery mechanism once execution completes.
 
-```
+## Server Response
+
+### Success Response (200 OK)
+
+Upon successful execution, following JSON output is expected.
+
+```json
 {"status": "success", "files_deleted": 14, "space_saved_mb": 42.5}
 ```
+### Error Response (400 Not Found)
 
-Wrong directory path will throw following error.
+Passing an invalid or unreachable directory will trigger a termination error. 
 
-```
+```json
 {"status": "error", "message": "Directory not found"}
 ```
 
-> [!WARNING]
-> Script exceuted once can't be undone resulting the permanent deletion of the file.
+
