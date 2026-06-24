@@ -32,7 +32,10 @@ To run the script, type the following command on terminal.
 python log-purger.py --dir /var/log --days 30
 ```
 
-The `--dir` is the target directory where the logs are stored, and `--days` is the threshold (like, any logs older than that number of days get deleted permanently).
+| `--dir` | `--days` |
+| --- | --- |
+|  The `--dir` is the target directory where the logs are stored   | `--days` is the threshold (like, any logs older than that number of days get deleted permanently) |
+
 
 It returns the following JSON output
 
